@@ -36,15 +36,14 @@ global:
     dashboard: false
 
   # Choose the backend for Tyk. [ "mongo", "postgres" ]
-  backend: mongo
+  backend: postgres
 
   postgres:
-    host: tyk-postgres-postgresql.tyk.svc.cluster.local
+    host: paymax.c7ncj0jagcfr.us-east-1.rds.amazonaws.com
     port: 5432
     user: postgres
-    password:
-    database: tyk_analytics
-    sslmode:
+    password: postgres
+    database: postgres
 
     # connection string can also be set using a secret. Provide the name of the secret and key below.
     # connectionStringSecret:
@@ -146,14 +145,15 @@ dashboard:
     # image pull policy
     pullPolicy: Always
   service:
-    type: NodePort
+    type: LoadBalancer
     externalTrafficPolicy: Local
     annotations: {}
 
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
-  resources: {}
+  resources:
+    {}
     # We usually recommend not to specify default resources and to leave this
     # as a conscious choice for the user. This also increases chances charts
     # run on environments with little resources, such as Minikube. If you do

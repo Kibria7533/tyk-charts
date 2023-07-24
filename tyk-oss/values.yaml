@@ -133,7 +133,7 @@ tyk-gateway:
 
     service:
       # type of service
-      type: NodePort
+      type: ClusterIP
 
       # service port
       port: 443
